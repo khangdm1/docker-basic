@@ -8,10 +8,19 @@
 # The image should meet the following specifications:
 
 # Use nginx tag 1.15.8 as the base image.
+
+FROM nginx:1.15.8
 # Add the static fresh fruit data to the image so that it will be served by the nginx server. The data file is located on the server at static/fruit.json under the project directory. Add this file to the image at the location /usr/share/nginx/html/fruit.json.
+
+COPY static/fruit.json /usr/share/nginx/html/fruit.json
 # Add the nginx configuration file. This file is located on the server in the project directory and is called nginx.conf. Add this file to the image at /etc/nginx/nginx.conf.
+
+COPY nginx.conf /etc/nginx/nginx.conf
 # The image should expose port 80.
+
 # Use the following as the default command: nginx -g daemon off;.
+
+
 # Build the image with the tag fruit-list:1.0.0
 # Once you have built the image you should be able to test it by running it as a container:
 
